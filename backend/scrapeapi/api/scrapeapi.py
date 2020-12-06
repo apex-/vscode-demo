@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from scrape import scrape
+
+from scrapeapi.business.biz_scrape import scrape
 
 app = FastAPI()
-
 
 @app.get("/")
 async def root():
@@ -12,3 +12,6 @@ async def root():
 @app.get('/amazon')
 async def scrape_price(url: str):
     return scrape(url)
+
+
+print('Initialized')

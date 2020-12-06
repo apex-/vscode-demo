@@ -3,4 +3,6 @@ uvicorn
 sqlalchemy
 requests
 selectorlib
+pylint
+tox
 

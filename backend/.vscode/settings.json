@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/home/tbruese/.virtualenvs/vscode-demo/bin/python"
+    "python.pythonPath": "C:\\Users\\tbruese\\envs\\vscode-demo\\Scripts\\python.exe",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true
 }

@@ -9,11 +9,11 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import DateTime
-from .database import Base
 
+from scrapeapi.persistence.database import Base, engine
 
 class Article(Base):
-    __table__ = 'article'
+    __tablename__ = 'article'
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     price = Column(Numeric)
@@ -27,3 +27,6 @@ class Article(Base):
     link_to_all_reviews=Column(String)
     scrape_timestamp=Column(DateTime)
     url=Column(String)
+
+Base.metadata.create_all(bind=engine)
+ 
