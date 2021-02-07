@@ -1,17 +1,25 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 
-from scrapeapi.business.biz_scrape import scrape
+from scrapeapi.business.biz_scrape import (
 
-app = FastAPI()
+    biz_amazon_scrape,
+)
+from scrapeapi.api.apimodels import AmazonArticle
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+app = FastAPI(title="Scrape API", version="1.0")
 
+@app.post('/product', tags=["Amazon"])
+async def add_product(url: str):
+    return biz_amazon_scrape(url)
 
-@app.get('/amazon')
-async def scrape_price(url: str):
-    return scrape(url)
+@app.get('/product', tags=["Amazon"])
+async def list_products(url: str):
+    return biz_amazon_scrape(url)
 
+@app.delete('/product', tags=["Amazon"])
+async def delete_products(url: str):
+    return biz_amazon_scrape(url)
 
-print('Initialized')
+@app.get('/test_scrape', tags=["Amazon"], response_model=AmazonArticle)
+async def test_scrape_product(url: str):
+    return biz_amazon_scrape(url)

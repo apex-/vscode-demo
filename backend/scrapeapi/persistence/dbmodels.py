@@ -12,8 +12,8 @@ from sqlalchemy.sql.sqltypes import DateTime
 
 from scrapeapi.persistence.database import Base, engine
 
-class Article(Base):
-    __tablename__ = 'article'
+class AmazonArticle(Base):
+    __tablename__ = 'amazon_article'
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     price = Column(Numeric)
@@ -25,8 +25,8 @@ class Article(Base):
     product_description=Column(String)
     sales_rank=Column(Integer)
     link_to_all_reviews=Column(String)
-    scrape_timestamp=Column(DateTime)
-    url=Column(String)
+    scraped_at=Column(DateTime)
+    scrape_url=Column(String)
 
 Base.metadata.create_all(bind=engine)
  
